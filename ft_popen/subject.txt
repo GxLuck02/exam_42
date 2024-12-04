@@ -1,6 +1,7 @@
 allow: pipe, dup2, execvp(), fork, close, 
 int ft_popen(char const *fille, char const argv[], int type)
 
+
 ft_popen need to return -1 in errror case
 if type is 'r' ft_popen return the fd link with output
 if type is 'W' ft_popen return the fd link with input 

@@ -6,7 +6,7 @@
 /*   By: ttreichl <ttreichl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:30:20 by ttreichl          #+#    #+#             */
-/*   Updated: 2024/12/03 17:31:56 by ttreichl         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:52:21 by ttreichl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,20 @@ int	ft_popen(char const *file, char *const argv[], char type)
 			{
 				close(fd[0]);
 				if (dup2(fd[1], STDOUT_FILENO) == -1)
-					return (-1);
+					exit(EXIT_FAILURE);
+                close(fd[1]);
 			}
 			else if (type == 'w')
 			{
 				close(fd[1]);
 				if (dup2(fd[0], STDIN_FILENO) == -1)
-					return (-1);
+					exit(EXIT_FAILURE);
+                close(fd[0]);
 			}
 			else
 				return (-1);
 			execvp(file, argv);
+            exit(EXIT_FAILURE);
 		}
 		else//parent
 		{
