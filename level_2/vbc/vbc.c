@@ -30,7 +30,7 @@ void destroy_tree(node *n) {
     }
     free(n);
 }
-
+// exit a ajouter
 void unexpected(char c) {
     if (c)
         printf("Unexpected token '%c'\n", c);
